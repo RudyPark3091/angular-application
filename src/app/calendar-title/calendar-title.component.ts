@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-calendar-title',
@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CalendarTitleComponent implements OnInit {
   @Input() date: Date;
+  @Output() changePrevMonth = new EventEmitter();
+  @Output() changeNextMonth = new EventEmitter();
 
   constructor() {}
 

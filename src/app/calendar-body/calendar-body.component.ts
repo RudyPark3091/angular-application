@@ -1,18 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-calendar-body',
   templateUrl: './calendar-body.component.html',
   styleUrls: ['./calendar-body.component.css'],
 })
-export class CalendarBodyComponent implements OnInit {
+export class CalendarBodyComponent implements OnChanges {
   @Input() date: Date;
   firstDate: Date;
   days: number[] = [];
 
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
+    this.render();
+  }
+
+  render() {
+    this.days = [];
     this.firstDate = new Date(this.date.getFullYear(), this.date.getMonth());
     const day = this.firstDate.getDay();
     const date = this.firstDate.getDate();
@@ -23,7 +28,7 @@ export class CalendarBodyComponent implements OnInit {
 
     for (let i = 0; i < 42; i++) {
       if (i >= day && i < day + lastDate) {
-        this.days.push(i);
+        this.days.push(i - day + 1);
       } else {
         this.days.push(-1);
       }

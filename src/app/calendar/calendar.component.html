@@ -1,2 +1,10 @@
-<app-calendar-title [date]="currentDate"></app-calendar-title>
-<app-calendar-body [date]="currentDate"></app-calendar-body>
+<app-calendar-title
+  [date]="date"
+  (changeNextMonth)="setDate(getNextDate())"
+  (changePrevMonth)="setDate(getPrevDate())"
+></app-calendar-title>
+<app-calendar-body
+  [date]="date"
+  (changeNextMonth)="setDate(getNextDate())"
+  (changePrevMonth)="setDate(getPrevDate())"
+></app-calendar-body>

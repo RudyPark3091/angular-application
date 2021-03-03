@@ -1,5 +1,9 @@
 <div *ngIf="date">
+  <button (click)="changePrevMonth.emit()"><</button>
+
   <span>{{ date.getFullYear() }}</span>
   <span>/</span>
   <span>{{ date.getMonth() + 1 }}</span>
+
+  <button (click)="changeNextMonth.emit()">></button>
 </div>
