@@ -1,5 +1,11 @@
 .calendar-body-container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+}
+
+.calendar-day-wrapper {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
