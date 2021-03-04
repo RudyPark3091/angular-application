@@ -1,5 +1,19 @@
 .calendar-body-container {
+  --weekcolumn-height: 20px;
+  width: 70%;
+  height: var(--body-height);
+}
+
+.calendar-week-column {
+  height: var(--weekcolumn-height);
+  text-align: center;
   display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day-container {
+  display: grid;
+  height: calc(100% - var(--weekcolumn-height));
   grid-template-columns: repeat(7, 1fr);
 }
 
@@ -8,4 +22,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.calendar-day-saturday {
+  color: #00f;
+}
+
+.calendar-day-sunday {
+  color: #f00;
 }

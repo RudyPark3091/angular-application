@@ -1,0 +1,15 @@
+app-calendar-title {
+  width: 100%;
+  height: var(--title-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+app-calendar-body {
+  width: 100%;
+  height: var(--body-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

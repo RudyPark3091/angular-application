@@ -1,8 +1,24 @@
 <div class="calendar-body-container">
 
-  <div class="calendar-day-wrapper" *ngFor="let day of days">
-    <span *ngIf="day !== -1">{{ day }}</span>
-    <span *ngIf="day === -1"></span>
+  <div class="calendar-week-column">
+    <div class="calendar-day-sunday">Sun</div>
+    <div>Mon</div>
+    <div>Tue</div>
+    <div>Wed</div>
+    <div>Thu</div>
+    <div>Fri</div>
+    <div class="calendar-day-saturday">Sat</div>
+  </div>
+
+  <div class="calendar-day-container">
+
+    <div class="calendar-day-wrapper" *ngFor="let day of days; index as i">
+      <span class="calendar-day-sunday" *ngIf="day !== -1 && i % 7 === 0">{{ day }}</span>
+      <span class="calendar-day-saturday" *ngIf="day !== -1 && i % 7 === 6">{{ day }}</span>
+      <span *ngIf="day !== -1 && i % 7 !== 0 && i % 7 !== 6">{{ day }}</span>
+      <span *ngIf="day === -1"></span>
+    </div>
+
   </div>
 
 </div>
