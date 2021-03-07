@@ -2,21 +2,22 @@
 
   <div class="calendar-week-column">
     <div class="calendar-day-sunday">Sun</div>
-    <div>Mon</div>
-    <div>Tue</div>
-    <div>Wed</div>
-    <div>Thu</div>
-    <div>Fri</div>
+    <div class="calendar-day-weekday">Mon</div>
+    <div class="calendar-day-weekday">Tue</div>
+    <div class="calendar-day-weekday">Wed</div>
+    <div class="calendar-day-weekday">Thu</div>
+    <div class="calendar-day-weekday">Fri</div>
     <div class="calendar-day-saturday">Sat</div>
   </div>
 
   <div class="calendar-day-container">
 
     <div class="calendar-day-wrapper" *ngFor="let day of days; index as i">
-      <span class="calendar-day-sunday" *ngIf="day !== -1 && i % 7 === 0">{{ day }}</span>
-      <span class="calendar-day-saturday" *ngIf="day !== -1 && i % 7 === 6">{{ day }}</span>
-      <span *ngIf="day !== -1 && i % 7 !== 0 && i % 7 !== 6">{{ day }}</span>
-      <span *ngIf="day === -1"></span>
+      <span [ngSwitch]="day.dayName" *ngIf="day.render">
+        <span *ngSwitchCase="'Sun'" class="calendar-day-sunday">{{ day.dayNumber }}</span>
+        <span *ngSwitchCase="'Sat'" class="calendar-day-saturday">{{ day.dayNumber }}</span>
+        <span *ngSwitchDefault class="calendar-day-weekday">{{ day.dayNumber }}</span>
+      </span>
     </div>
 
   </div>

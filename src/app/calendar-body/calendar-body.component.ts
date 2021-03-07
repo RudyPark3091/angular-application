@@ -8,7 +8,8 @@ import { Component, Input, OnChanges } from '@angular/core';
 export class CalendarBodyComponent implements OnChanges {
   @Input() date: Date;
   firstDate: Date;
-  days: number[] = [];
+  dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  days: { dayNumber: number, render: boolean, dayName: string }[] = [];
 
   constructor() {}
 
@@ -20,7 +21,6 @@ export class CalendarBodyComponent implements OnChanges {
     this.days = [];
     this.firstDate = new Date(this.date.getFullYear(), this.date.getMonth());
     const day = this.firstDate.getDay();
-    const date = this.firstDate.getDate();
     const lastDate = this.getLastDate(
       this.date.getFullYear(),
       this.date.getMonth()
@@ -28,9 +28,17 @@ export class CalendarBodyComponent implements OnChanges {
 
     for (let i = 0; i < 42; i++) {
       if (i >= day && i < day + lastDate) {
-        this.days.push(i - day + 1);
+        this.days.push({
+          dayNumber: i - day + 1,
+          render: true,
+          dayName: this.dayNames[i % 7],
+        });
       } else {
-        this.days.push(-1);
+        this.days.push({
+          dayNumber: i - day + 1,
+          render: false,
+          dayName: this.dayNames[i % 7],
+        });
       }
     }
   }
